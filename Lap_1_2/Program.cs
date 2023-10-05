@@ -6,8 +6,7 @@
  * Найти сумму элементов в тех столбцах, которые содержат хотя бы один отрицательный элемент
  */
 
-public class Program
-{
+public class Program {
     // Поменяйте местами два столбца массива
     static void swap(int[,] arr, int a, int b) {
         for (var i = 0; i < arr.GetLength(0); ++i) {
@@ -17,7 +16,7 @@ public class Program
         }
     }
     // Вычислить сумму отрицательных элементов столбцов
-    static int[] sub_sum_arr(int[,] arr) {
+    static int[] sumOfNefativeElements(int[,] arr) {
         var sum = new int[arr.GetLength(1)];
         for (var j = 0; j < arr.GetLength(1); ++j) {
             for (var i = 0; i < arr.GetLength(0); ++i) {
@@ -27,10 +26,10 @@ public class Program
         return sum;
     }
     // сортировать массив 
-    static void sort_array(int[,] arr)
+    static void sortArray(int[,] arr)
     {
         // найти сумму 
-        var sum = sub_sum_arr(arr);
+        var sum = sumOfNefativeElements(arr);
         // сортировать массив 
         for (var i = 0; i < sum.Length; ++i) {
             for (var j = i; j < sum.Length; ++j) {
@@ -41,16 +40,12 @@ public class Program
                     sum[j] = temp;
                 }
             }
-            
-            
-            
-            
         }
     }
 
-    static int sum_array(int[,] arr)
+    static int sumArray(int[,] arr)
     {
-        var sum_arr = sub_sum_arr(arr);
+        var sum_arr = sumOfNefativeElements(arr);
         var sum = 0;
         for (var j = 0; j < arr.GetLength(1); ++j) {
             if (sum_arr[j] != 0) {
@@ -62,7 +57,7 @@ public class Program
         return sum;
     }
     // print
-    static void print_array(int[,] arr) {
+    static void printArray(int[,] arr) {
         for (var i = 0; i < arr.GetLength(0); ++i){
             for (var j = 0; j < arr.GetLength(1); ++j){
                 Console.Write($"{arr[i,j],5:D}");
@@ -73,23 +68,24 @@ public class Program
     static void Main(String[] args)
     {
         // создать массив 
-        var n = int.Parse(Console.ReadLine());
-        var m = int.Parse(Console.ReadLine());
-        var arr = new int[n,m];
+        uint length, width;
+        uint.TryParse(Console.ReadLine(), out length);
+        uint.TryParse(Console.ReadLine(), out width);
+        var arr = new int[length,width];
         Random r = new Random();
-        for (var i = 0; i < n; ++i) {
-            for (var j = 0; j < m; ++j){
+        for (var i = 0; i < length; ++i) {
+            for (var j = 0; j < width; ++j){
                 arr[i, j] = r.Next(-100,100);
             }
         }
         Console.WriteLine("original array");
-        print_array(arr);
+        printArray(arr);
         // сортировать 
-        sort_array(arr);
+        sortArray(arr);
         Console.WriteLine("array after sorting");
-        print_array(arr);
+        printArray(arr);
         // найти сумму 
-        Console.WriteLine("sum of columns with at least 1 negative element: " + sum_array(arr));
+        Console.WriteLine("sum of columns with at least 1 negative element: " + sumArray(arr));
 
     }
 }

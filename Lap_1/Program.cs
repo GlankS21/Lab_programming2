@@ -1,4 +1,5 @@
-﻿namespace Lap_1;
+﻿namespace Lap_1;  
+  
 
 public class Program
 {
@@ -23,16 +24,16 @@ public class Program
         return min_index;
     }
     static double sum_elements(double[] arr){
-        var fi_index = int.MinValue; // найти первый отрицательный элемент
-        for (var i = 0; i < arr.Length; ++i){
+        var fistIndex = int.MinValue; // найти первый отрицательный элемент
+        for (var i = 0; i < arr.Length; ++i){ //
             if (arr[i] < 0){
-                fi_index = i;
+                fistIndex = i;
                 break;
             }
         }
-        if (fi_index != int.MinValue){ // найти второй отрицательный элемент
+        if (fistIndex != int.MinValue){ // найти второй отрицательный элемент
             var se_index = int.MinValue;
-            for (var i = fi_index + 1; i < arr.Length; ++i){
+            for (var i = fistIndex + 1; i < arr.Length; ++i){
                 if (arr[i] < 0){
                     se_index = i;
                     break;
@@ -40,17 +41,22 @@ public class Program
             }
             if (se_index != int.MinValue){ // найти сумму 
                 var sum = 0.0;
-                for (var i = fi_index + 1; i < se_index; ++i) sum += arr[i];
+                for (var i = fistIndex + 1; i < se_index; ++i) sum += arr[i];
                 return sum;
             }
         } 
         return Double.MinValue;
     }
-    static void Main(){
-        var n = int.Parse(Console.ReadLine());
-        var arr = new double[n];
+    static void Main() {
+        uint lengthArray;
+        uint.TryParse(Console.ReadLine(), out lengthArray);
+        var arr = new double[lengthArray];
         for (var i = 0; i < arr.Length; ++i)
-            arr[i] = double.Parse(Console.ReadLine());
+        {
+            double elementArray; 
+            double.TryParse(Console.ReadLine(), out elementArray);
+            arr[i] = elementArray;   
+        }
         // сортировать массив 
         Sort(arr);
         Console.Write("Matrix : ");
@@ -62,6 +68,6 @@ public class Program
 
         // сумму элементов массива, расположенных между первым и вторым отрицательными элементами.
         double sum = sum_elements(arr);
-        Console.WriteLine(((sum == Double.MinValue) ? "Error":"the sum of the array elements located between the first and second negative elements: " + sum));
+        Console.WriteLine(sum == Double.MinValue ? "Error":"the sum of the array elements located between the first and second negative elements: " + sum);
     }
 }
