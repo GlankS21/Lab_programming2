@@ -1,5 +1,5 @@
-﻿namespace Lap_1;
-
+﻿namespace Lap_1;  
+  
 public class Program
 {
     static void Sort(double[] arr){
@@ -24,7 +24,7 @@ public class Program
     }
     static double sum_elements(double[] arr){
         var fi_index = int.MinValue; // найти первый отрицательный элемент
-        for (var i = 0; i < arr.Length; ++i){
+        for (var i = 0; i < arr.Length; ++i){ //
             if (arr[i] < 0){
                 fi_index = i;
                 break;
