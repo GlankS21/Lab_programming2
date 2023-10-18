@@ -8,7 +8,7 @@
 
 public class Program {
     // Поменяйте местами два столбца массива
-    static void swap(int[,] arr, int a, int b){ 
+    static void swap(int[,] arr, int a, int b){  
         for (var i = 0; i < arr.GetLength(0); ++i) {
             var temp = arr[i, a];
             arr[i, a] = arr[i, b];
@@ -16,7 +16,7 @@ public class Program {
         }
     }
     // Вычислить сумму отрицательных элементов столбцов
-    static int[] sumOfNefativeElements(int[,] arr){ 
+    static int[] sumOfNefativeElements(int[,] arr){  
         var sum = new int[arr.GetLength(1)];
         for (var j = 0; j < arr.GetLength(1); ++j) {
             for (var i = 0; i < arr.GetLength(0); ++i) {
@@ -26,10 +26,10 @@ public class Program {
         return sum;
     }
     // сортировать массив 
-    static void sortArray(int[,] arr) 
+    static void sortArray(int[,] arr)  
     {
         // найти сумму 
-        var sum = sumOfNefativeElements(arr);
+        var sum = sumOfNefativeElements(arr); 
         // сортировать массив 
         for (var i = 0; i < sum.Length; ++i) {
             for (var j = i; j < sum.Length; ++j) {
@@ -43,9 +43,9 @@ public class Program {
         }
     }
 
-    static int sumArray(int[,] arr) 
+    static int sumArray(int[,] arr)  
     {
-        var sum_arr = sumOfNefativeElements(arr); 
+        var sum_arr = sumOfNefativeElements(arr);  
         var sum = 0;
         for (var j = 0; j < arr.GetLength(1); ++j) {
             if (sum_arr[j] != 0) {
@@ -57,7 +57,7 @@ public class Program {
         return sum;
     }
     // print
-    static void printArray(int[,] arr) { 
+    static void printArray(int[,] arr) {  
         for (var i = 0; i < arr.GetLength(0); ++i){
             for (var j = 0; j < arr.GetLength(1); ++j){
                 Console.Write($"{arr[i,j],5:D}");
@@ -68,9 +68,9 @@ public class Program {
     static void Main(String[] args)
     {
         // создать массив 
-        uint length, width; 
-        uint.TryParse(Console.ReadLine(), out length); 
-        uint.TryParse(Console.ReadLine(), out width); 
+        uint length, width;  
+        uint.TryParse(Console.ReadLine(), out length);  
+        uint.TryParse(Console.ReadLine(), out width);  
         var arr = new int[length,width];
         Random r = new Random();
         for (var i = 0; i < length; ++i) {
