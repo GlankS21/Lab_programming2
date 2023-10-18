@@ -68,6 +68,6 @@ public class Program
 
         // сумму элементов массива, расположенных между первым и вторым отрицательными элементами.
         double sum = sumElements(arr);
-        Console.WriteLine(((sum == Double.MinValue) ? "Error":"the sum of the array elements located between the first and second negative elements: " + sum));
+        Console.WriteLine(sum == Double.MinValue ? "Error":"the sum of the array elements located between the first and second negative elements: " + sum);
     }
 }
