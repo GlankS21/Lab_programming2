@@ -7,14 +7,14 @@ public class Program
         var fist = new double[arr.Length];
         var second = new double[arr.Length];
         // ReSharper disable once InconsistentNaming
-        var fi_index = 0;
-        var se_index = 0;
+        var fistIndex = 0;
+        var secondIndex = 0;
         for (int i = 0; i < arr.Length; i++){
-            if (Math.Abs(arr[i]) < 1) fist[fi_index++] = arr[i];
-            else second[se_index++] = arr[i];
+            if (Math.Abs(arr[i]) < 1) fist[fistIndex++] = arr[i];
+            else second[secondIndex++] = arr[i];
         }
-        Array.Copy(fist, 0, arr, 0, fi_index);
-        Array.Copy(second, 0, arr, fi_index, se_index);
+        Array.Copy(fist, 0, arr, 0, fistIndex);
+        Array.Copy(second, 0, arr, fistIndex, secondIndex);
     }
     static int Min(double[] arr){
         var min_index = 0;
@@ -23,7 +23,7 @@ public class Program
         }
         return min_index;
     }
-    static double sum_elements(double[] arr){
+    static double sumElements(double[] arr){
         var fistIndex = int.MinValue; // найти первый отрицательный элемент
         for (var i = 0; i < arr.Length; ++i){ //
             if (arr[i] < 0){
@@ -48,13 +48,13 @@ public class Program
         return Double.MinValue;
     }
     static void Main() {
-        uint lengthArray;
-        uint.TryParse(Console.ReadLine(), out lengthArray);
-        var arr = new double[lengthArray];
+        uint lengthArray; 
+        uint.TryParse(Console.ReadLine(), out lengthArray); 
+        var arr = new double[lengthArray]; 
         for (var i = 0; i < arr.Length; ++i)
         {
-            double elementArray; 
-            double.TryParse(Console.ReadLine(), out elementArray);
+            double elementArray;  
+            double.TryParse(Console.ReadLine(), out elementArray); 
             arr[i] = elementArray;   
         }
         // сортировать массив 
@@ -67,7 +67,7 @@ public class Program
         Console.WriteLine("number of the minimum array element: " + Min(arr));
 
         // сумму элементов массива, расположенных между первым и вторым отрицательными элементами.
-        double sum = sum_elements(arr);
+        double sum = sumElements(arr);
         Console.WriteLine(sum == Double.MinValue ? "Error":"the sum of the array elements located between the first and second negative elements: " + sum);
     }
 }
